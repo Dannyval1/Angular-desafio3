@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card p-5 mt-5">
+        <h1>Ingreso de estudiante</h1>
+        <form [formGroup]="formularioIngresar" (ngSubmit)="agregar()">
+          <div class="mb-3">
+            <label for="inputName" class="form-label">Nombre</label>
+            <input type="text" formControlName="nombre" class="form-control" id="inputName" />
+            <div class="alert alert-success" *ngIf="formularioIngresar.controls['nombre'].touched && formularioIngresar.controls['nombre'].valid">Campo Correcto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['nombre'].touched && formularioIngresar.controls['nombre'].errors?.['required'] ">Campo Incorrecto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['nombre'].touched && formularioIngresar.controls['nombre'].errors?.['pattern'] ">Campo Incorrecto</div>
+          </div>
+          <div class="mb-3">
+            <label for="inputEdad" class="form-label">Edad</label>
+            <input type="text" formControlName="edad" class="form-control" id="inputEdad" />
+            <div class="alert alert-success" *ngIf="formularioIngresar.controls['edad'].touched && formularioIngresar.controls['edad'].valid">Campo Correcto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['edad'].touched && formularioIngresar.controls['edad'].errors?.['required'] ">Campo Incorrecto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['edad'].touched && formularioIngresar.controls['edad'].errors?.['min'] ">Campo Incorrecto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['edad'].touched && formularioIngresar.controls['edad'].errors?.['pattern'] ">Campo Incorrecto</div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Correo</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              formControlName="correo"
+            />
+            <div class="alert alert-success" *ngIf="formularioIngresar.controls['correo'].touched && formularioIngresar.controls['correo'].valid">Campo Correcto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['correo'].touched && formularioIngresar.controls['correo'].errors?.['required'] ">Campo Incorrecto</div>
+            <div class="alert alert-danger" *ngIf="formularioIngresar.controls['correo'].touched && formularioIngresar.controls['correo'].errors?.['email'] ">Campo Incorrecto</div>
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+              formControlName="activo"
+            />
+            <label class="form-check-label" for="exampleCheck1">Activo</label>
+          </div>
+          <button [disabled]="formularioIngresar.invalid" type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
